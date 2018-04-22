@@ -6,7 +6,7 @@ class Stack:
         self.string_mode = False
 
     def push(self, val):
-        assert isinstance(val, int), "Can only push integers on the stack"
+        assert isinstance(val, int), f"Can only push integers on the stack, not {val}"
         self._stack.append(val)
 
     def pop(self):

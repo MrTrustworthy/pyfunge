@@ -18,12 +18,20 @@ class Grid:
     def load_app(self, app):
         self.grid = self._load_map(app)
         self.size_x, self.size_y = self.get_sizes(self.grid)
+        self._pad_map()
 
     def get(self, point: "Point") -> Symbol:
         return self.grid[point.y][point.x]
 
     def set(self, point: "Point", value: Symbol):
         self.grid[point.y][point.x] = value
+
+    def _pad_map(self):
+        for row in self.grid:
+            missing = self.size_x - len(row)
+            for i in range(missing):
+                row.append(Symbol.instance_from_symbol_name(" "))
+
 
     def _load_map(self, string: str) -> Arr2D:
         base = []

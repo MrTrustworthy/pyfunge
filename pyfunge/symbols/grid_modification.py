@@ -22,7 +22,9 @@ class Get(Symbol):
 
     def execute(self, stack: "Stack", grid: "Grid") -> Tuple["Stack", "Point"]:
         x, y = stack.pop(), stack.pop()
-        stack.push(grid.get(Point(x, y)))
+        point = Point(x, y)
+        symbol = grid.get(point)
+        stack.push(ord(symbol.symbol_string))
         return stack, None
 
 
